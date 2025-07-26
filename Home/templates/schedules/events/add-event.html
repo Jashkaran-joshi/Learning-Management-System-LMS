@@ -1,0 +1,144 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Add Event</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'event_list' %}">Events</a></li>
+                        <li class="breadcrumb-item active">Add Event</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Event Information</span></h5>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Event Code</label>
+                                        <input type="text" name="event_code" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Event Type</label>
+                                        <select name="event_type" class="form-control" required>
+                                            <option value="">Select Type</option>
+                                            <option value="Seminar">Seminar</option>
+                                            <option value="Workshop">Workshop</option>
+                                            <option value="Conference">Conference</option>
+                                            <option value="Webinar">Webinar</option>
+                                            <option value="Social">Social</option>
+                                            <option value="Cultural">Cultural</option>
+                                            <option value="Sports">Sports</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        <select name="department" class="form-control" required>
+                                            <option value="">Select Department</option>
+                                            <option value="Mathematics">Mathematics</option>
+                                            <option value="Physics">Physics</option>
+                                            <option value="Chemistry">Chemistry</option>
+                                            <option value="Biology">Biology</option>
+                                            <option value="History">History</option>
+                                            <option value="Geography">Geography</option>
+                                            <option value="English">English</option>
+                                            <option value="Computer Science">Computer Science</option>
+                                            <option value="General">General</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Organizer</label>
+                                        <input type="text" name="organizer" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Event Date</label>
+                                        <input type="date" name="event_date" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" name="start_time" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Duration (Minutes)</label>
+                                        <input type="number" name="duration_minutes" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <input type="text" name="location" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea name="description" class="form-control"
+                                            placeholder="Describe the event in detail"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Add Event</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

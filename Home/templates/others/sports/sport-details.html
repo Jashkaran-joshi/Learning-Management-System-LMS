@@ -1,0 +1,83 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Sport Details</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'sport_list' %}">Sports</a></li>
+                        <li class="breadcrumb-item active">{{ sport.name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        {% if sport.image %}
+                        <img src="{{ sport.image.url }}" class="mr-3 rounded-circle" alt="{{ sport.name }}" style="width: 150px; height: 150px; object-fit: cover;">
+                        {% else %}
+                        <img src="{% static 'assets/img/profiles/default-profile.png' %}" class="mr-3 rounded-circle" alt="No Image"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-9">
+                        <h4>{{ sport.name }}</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li><strong>Type:</strong> {{ sport.sport_type }}</li>
+                            <li><strong>Number of Players:</strong> {{ sport.number_of_players }}</li>
+                            <li><strong>Origin Country:</strong> {{ sport.origin_country }}</li>
+                            <li><strong>Governing Body:</strong> {{ sport.governing_body }}</li>
+                            <li><strong>Popularity Rank:</strong> {{ sport.popularity_rank|default:"N/A" }}</li>
+                            <li><strong>Olympic Sport:</strong> {{ sport.olympic_sport|yesno:"Yes,No" }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if sport.equipment_required %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>Equipment Required</h5>
+                        <p>{{ sport.equipment_required }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if sport.rules %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>Rules</h5>
+                        <p>{{ sport.rules }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if sport.description %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>Description</h5>
+                        <p>{{ sport.description }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+     <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

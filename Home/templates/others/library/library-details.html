@@ -1,0 +1,57 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Book Details</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'book_list' %}">Library</a></li>
+                        <li class="breadcrumb-item active">{{ book.title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <h4>{{ book.title }}</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li><strong>ISBN:</strong> {{ book.isbn }}</li>
+                            <li><strong>Genre:</strong> {{ book.genre }}</li>
+                            <li><strong>Author:</strong> {{ book.author }}</li>
+                            <li><strong>Publisher:</strong> {{ book.publisher}}</li>
+                            <li><strong>Published Date:</strong> {{ book.publish_date }}</li>
+                            <li><strong>Pages:</strong> {{ book.number_of_pages }}</li>
+                            <li><strong>Copies Available:</strong> {{ book.number_of_copies }}</li>
+                            <li><strong>Language:</strong> {{ book.language }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if book.description %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>Description</h5>
+                        <p>{{ book.description }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+     <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Subject Details</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'subject_list' %}">Subjects</a></li>
+                        <li class="breadcrumb-item active">{{ subject.name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="media align-items-start">
+
+                    {% if subject.teacher.image %}
+                    <img src="{{ subject.teacher.image.url }}" class="rounded-circle mr-3" alt="Teacher Image"
+                        style="width: 100px; height: 100px; object-fit: cover;">
+                    {% else %}
+                    <img src="{% static 'assets/img/profiles/default-profile.png' %}" class="rounded-circle mr-3"
+                        alt="No Image" style="width: 100px; height: 100px; object-fit: cover;">
+                    {% endif %}
+
+                    <div class="media-body">
+                        <h4 class="mb-2">{{ subject.name }}</h4>
+                        <p><strong>Code:</strong> {{ subject.code }}</p>
+                        <p><strong>Teacher:</strong> {{ subject.teacher.name }} ({{ subject.teacher.teacher_code }})</p>
+                        {% if subject.description %}
+                        <p><strong>Description:</strong><br>{{ subject.description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+{% endblock %}

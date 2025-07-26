@@ -1,0 +1,136 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Add Sport</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'sport_list' %}">Sports</a></li>
+                        <li class="breadcrumb-item active">Add Sport</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Sport Information</span></h5>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Sport Type</label>
+                                        <select name="sport_type" class="form-control" required>
+                                            <option value="">Select Type</option>
+                                            <option value="Team">Team</option>
+                                            <option value="Individual">Individual</option>
+                                            <option value="Dual">Dual</option>
+                                            <option value="Extreme">Extreme</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Number of Players</label>
+                                        <input type="number" name="number_of_players" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Origin Country</label>
+                                        <input type="text" name="origin_country" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Equipment Required</label>
+                                        <textarea name="equipment_required" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Rules</label>
+                                        <textarea name="rules" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Governing Body</label>
+                                        <input type="text" name="governing_body" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Popularity Rank</label>
+                                        <input type="number" name="popularity_rank" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Olympic Sport</label><br>
+                                        <input type="checkbox" name="olympic_sport" value="true"> Yes
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea name="description" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file" name="image" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Add Sport</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

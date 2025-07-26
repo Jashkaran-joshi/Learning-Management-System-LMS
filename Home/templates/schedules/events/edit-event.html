@@ -1,0 +1,138 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Edit Event</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'event_list' %}">Events</a></li>
+                        <li class="breadcrumb-item active">Edit Event</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Event Information</span></h5>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control" value="{{ event.title }}"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Event Code</label>
+                                        <input type="text" name="event_code" class="form-control"
+                                            value="{{ event.event_code }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Event Type</label>
+                                        <select name="event_type" class="form-control" required>
+                                            {% for type in "Seminar,Workshop,Conference,Webinar,Social,Cultural,Sports,Other"|split:","%}
+                                            <option value="{{ type }}" {% if event.event_type==type %}selected{%endif%}>{{ type }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        <select name="department" class="form-control" required>
+                                            {% for dept in "Mathematics,Physics,Chemistry,Biology,History,Geography,English,ComputerScience,General"|split"," %}
+                                            <option value="{{ dept }}" {% if event.department==dept %}selected{% endif%}>{{ dept }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Organizer</label>
+                                        <input type="text" name="organizer" class="form-control"
+                                            value="{{ event.organizer }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Event Date</label>
+                                        <input type="date" name="event_date" class="form-control"
+                                            value="{{ event.event_date|date:'Y-m-d' }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" name="start_time" class="form-control"
+                                            value="{{ event.start_time|time:'H:i' }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Duration (Minutes)</label>
+                                        <input type="number" name="duration_minutes" class="form-control"
+                                            value="{{ event.duration_minutes }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <input type="text" name="location" class="form-control"
+                                            value="{{ event.location }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea name="description"
+                                            class="form-control">{{ event.description }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Update Event</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

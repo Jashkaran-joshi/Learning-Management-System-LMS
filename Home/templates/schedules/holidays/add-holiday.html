@@ -1,0 +1,113 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Add Holiday</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'holiday_list' %}">Holidays</a></li>
+                        <li class="breadcrumb-item active">Add Holiday</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Holiday Information</span></h5>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Holiday Code</label>
+                                        <input type="text" name="holiday_code" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Holiday Type</label>
+                                        <select name="holiday_type" class="form-control" required>
+                                            <option value="">Select Type</option>
+                                            <option value="Public">Public</option>
+                                            <option value="National">National</option>
+                                            <option value="Religious">Religious</option>
+                                            <option value="Cultural">Cultural</option>
+                                            <option value="Institutional">Institutional</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        <select name="department" class="form-control" required>
+                                            <option value="All">All Departments</option>
+                                            <option value="Mathematics">Mathematics</option>
+                                            <option value="Physics">Physics</option>
+                                            <option value="Chemistry">Chemistry</option>
+                                            <option value="Biology">Biology</option>
+                                            <option value="History">History</option>
+                                            <option value="Geography">Geography</option>
+                                            <option value="English">English</option>
+                                            <option value="Computer Science">Computer Science</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <input type="date" name="date" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea name="description" class="form-control"
+                                            placeholder="Optional details about the holiday..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Add Holiday</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

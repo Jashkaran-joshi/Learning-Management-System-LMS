@@ -1,0 +1,45 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Department Details</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'dept_list' %}">Departments</a></li>
+                        <li class="breadcrumb-item active">{{ dept.name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>{{ dept.name }} ({{ dept.code }})</h4>
+                        <p><strong>Head of Department:</strong> {{ dept.head_of_dept|default:"Not Assigned"}}</p>
+                        <p><strong>Established Year:</strong> {{ dept.established_year|default:"N/A" }}</p>
+                        <p><strong>Description:</strong><br>{{ dept.description|default:"No description provided."}}</p>
+                        <p><strong>Slug:</strong> {{ dept.slug }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center py-4 mt-5 border-top">
+      <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+   </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/plugins/datatables/datatables.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

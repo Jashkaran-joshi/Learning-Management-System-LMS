@@ -1,0 +1,79 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Hostel Details</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'hostel_list' %}">Hostels</a></li>
+                        <li class="breadcrumb-item active">{{ hostel.name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        {% if hostel.image %}
+                        <img src="{{ hostel.image.url }}" class="mr-3 rounded-circle" alt="{{ hostel.name }} style="width: 150px; height: 150px; object-fit: cover;>
+                        {% else %}
+                        <img src="{% static 'assets/img/profiles/default-profile.png' %}" class="mr-3 rounded-circle" alt="No Image"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
+                        {% endif %}
+
+                    </div>
+                    <div class="col-md-9">
+                        <h4>{{ hostel.name }}</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li><strong>Type:</strong> {{ hostel.hostel_type }}</li>
+                            <li><strong>Location:</strong> {{ hostel.location }}</li>
+                            <li><strong>Warden:</strong> {{ hostel.warden_name }}</li>
+                            <li><strong>Contact Number:</strong> {{ hostel.contact_number }}</li>
+                            <li><strong>Email:</strong> {{ hostel.email|default:"N/A" }}</li>
+                            <li><strong>Total Rooms:</strong> {{ hostel.total_rooms }}</li>
+                            <li><strong>Available Rooms:</strong> {{ hostel.available_rooms }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if hostel.facilities %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>Facilities</h5>
+                        <p>{{ hostel.facilities }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if hostel.rules %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>Rules</h5>
+                        <p>{{ hostel.rules }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

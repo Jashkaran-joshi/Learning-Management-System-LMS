@@ -1,0 +1,146 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Edit Hostel</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'hostel_list' %}">Hostels</a></li>
+                        <li class="breadcrumb-item active">Edit Hostel</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Hostel Information</span></h5>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control" value="{{ hostel.name }}"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Hostel Type</label>
+                                        <select name="hostel_type" class="form-control" required>
+                                            {% for type in "Boys,Girls,Co-ed"|split:"," %}
+                                            <option value="{{ type }}" {% if hostel.hostel_type==type %}selected{% endif
+                                                %}>{{ type }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <input type="text" name="location" class="form-control"
+                                            value="{{ hostel.location }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Warden Name</label>
+                                        <input type="text" name="warden_name" class="form-control"
+                                            value="{{ hostel.warden_name }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Contact Number</label>
+                                        <input type="text" name="contact_number" class="form-control"
+                                            value="{{ hostel.contact_number }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email" class="form-control"
+                                            value="{{ hostel.email }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Total Rooms</label>
+                                        <input type="number" name="total_rooms" class="form-control"
+                                            value="{{ hostel.total_rooms }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Available Rooms</label>
+                                        <input type="number" name="available_rooms" class="form-control"
+                                            value="{{ hostel.available_rooms }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Facilities</label>
+                                        <textarea name="facilities"
+                                            class="form-control">{{ hostel.facilities }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Rules</label>
+                                        <textarea name="rules" class="form-control">{{ hostel.rules }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file" name="image" class="form-control">
+                                        {% if hostel.image %}
+                                        <small>Current: <a href="{{ hostel.image.url }}" target="_blank">View
+                                                Image</a></small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Update Hostel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div> <!-- card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

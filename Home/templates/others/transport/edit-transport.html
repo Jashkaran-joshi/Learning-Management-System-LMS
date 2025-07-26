@@ -1,0 +1,146 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Edit Transport</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'transport_list' %}">Transport</a></li>
+                        <li class="breadcrumb-item active">Edit Transport</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Transport Information</span></h5>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control" value="{{ transport.name }}"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Transport Type</label>
+                                        <select name="transport_type" class="form-control" required>
+                                            {% for type in "Bus,Van,Car,Auto,Other"|split:"," %}
+                                            <option value="{{ type }}" {% if transport.transport_type==type %}selected{%
+                                                endif %}>{{ type }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Registration Number</label>
+                                        <input type="text" name="registration_number" class="form-control"
+                                            value="{{ transport.registration_number }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Capacity</label>
+                                        <input type="number" name="capacity" class="form-control"
+                                            value="{{ transport.capacity }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Driver Name</label>
+                                        <input type="text" name="driver_name" class="form-control"
+                                            value="{{ transport.driver_name }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Driver Contact</label>
+                                        <input type="text" name="driver_contact" class="form-control"
+                                            value="{{ transport.driver_contact }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Route Details</label>
+                                        <textarea name="route_details"
+                                            class="form-control">{{ transport.route_details }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Available Timings</label>
+                                        <input type="text" name="available_timings" class="form-control"
+                                            value="{{ transport.available_timings }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Associated Hostel</label>
+                                        <select name="associated_hostel" class="form-control" required>
+                                            {% for hostel in hostels %}
+                                            <option value="{{ hostel.id }}" {% if
+                                                transport.associated_hostel.id==hostel.id %}selected{% endif %}>
+                                                {{ hostel.name }} ({{ hostel.location }})
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file" name="image" class="form-control">
+                                        {% if transport.image %}
+                                        <small>Current: <a href="{{ transport.image.url }}" target="_blank">View
+                                                Image</a></small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Update Transport</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Preskool. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}
