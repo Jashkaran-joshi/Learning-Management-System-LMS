@@ -25,12 +25,12 @@ A web-based Learning Management System (LMS) built with Django to enhance teachi
 - **Automated Progress Tracking**: Track student progress and course completion.
 
 ## **Technologies Used**
-- **Backend**: Django (Python), Django ORM
-- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap (or any integrated UI libraries)
-- **Database**: PostgreSQL (SQLite for development)
-- **Version** Control: Git
-- **Deployment**: Nginx, Gunicorn
-- **Testing**: Django's built-in testing framework
+- **Backend**: Django (Python) v5.x, Django ORM
+- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap v5.x (or any integrated UI libraries)
+- **Database**: PostgreSQL v16.x (SQLite v3.x for development)
+- **Version** Control: Git v2.x
+- **Deployment**: Nginx v1.25.x, Gunicorn v21.x
+- **Testing**: Django's built-in testing framework (Django 5.x)
 
 ## **Project Structure**
 ```
