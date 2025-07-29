@@ -34,7 +34,7 @@ A web-based Learning Management System (LMS) built with Django to enhance teachi
 
 ## **Project Structure**
 ```
-Learning-Management-System-LMS/
+Learning-Management-System-LMS/ Home/
 │
 ├── manage.py                # Django project manager script
 ├── db.sqlite3               # SQLite database (for development)
