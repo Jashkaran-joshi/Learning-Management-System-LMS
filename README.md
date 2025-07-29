@@ -63,6 +63,7 @@ Follow these steps to set up the project locally:
 ```bash
 git clone https://github.com/Jashkaran-joshi/Learning-Management-System-LMS.git
 cd Learning-Management-System-LMS
+cd Home
 ```
 
 ### **2. Create a Virtual Environment**
