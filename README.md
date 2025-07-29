@@ -34,7 +34,7 @@ A web-based Learning Management System (LMS) built with Django to enhance teachi
 
 ## **Project Structure**
 ```
-learning_management_system/
+Learning-Management-System-LMS/
 │
 ├── manage.py                # Django project manager script
 ├── db.sqlite3               # SQLite database (for development)
@@ -61,8 +61,8 @@ Follow these steps to set up the project locally:
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/learning-management-system.git
-cd learning-management-system
+git clone https://github.com/Jashkaran-joshi/Learning-Management-System-LMS.git
+cd Learning-Management-System-LMS
 ```
 
 ### **2. Create a Virtual Environment**
@@ -77,7 +77,7 @@ pip install -r requirements.txt
 ```
 
 ### **4. Configure the Database**
-Update the `DATABASES` configuration in `lms/settings.py` to match your database setup.
+Update the `DATABASES` configuration in `Home/settings.py` to match your database setup.
 
 ### **5. Apply Migrations**
 ```bash
