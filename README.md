@@ -10,6 +10,7 @@ A web-based Learning Management System (LMS) built with Django to enhance teachi
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [User Credentials](#User-Credentials)
 - [Testing](#testing)
 
 ## **Features**
@@ -105,6 +106,23 @@ DATABASE_URL=postgres://user:password@localhost:5432/your_db_name
 ```
 
 Make sure to configure settings for production, including static files, security, and email backend.
+
+## **User Credentials**
+Use the following credentials to log in with different roles:
+
+**1. Admin**
+Username: `admin@gmail.com`
+Password: `admin@gmail.com`
+
+**2. Teacher**
+Username: `teacher@gmail.com`
+Password: `teacher@gmail.com`
+
+**3. Student**
+Username: `student@gmail.com`
+Password: `student@gmail.com`
+
+You can modify or create additional users from the Django Admin panel (/admin).
 
 ## **Testing**
 You can run the unit tests with Django's built-in testing framework:
