@@ -122,8 +122,6 @@ Password: `teacher@gmail.com`
 Username: `student@gmail.com`
 Password: `student@gmail.com`
 
-You can modify or create additional users from the Django Admin panel (/admin).
-
 ## **Testing**
 You can run the unit tests with Django's built-in testing framework:
 
